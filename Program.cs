@@ -222,26 +222,36 @@ class Program
         string content = string.Empty;
 
         // Extract text based on file type
-        switch (extension)
+        try
         {
-            case ".txt":
-            case ".md":
-                content = File.ReadAllText(filePath);
-                break;
-            case ".pdf":
-                content = PdfTextExtractor.ExtractText(filePath);
-                break;
-            case ".docx":
-            case ".pptx":
-            case ".xlsx":
-                content = OfficeTextExtractor.ExtractText(filePath);
-                break;
-            case ".eml":
-                content = EmailTextExtractor.ExtractText(filePath);
-                break;
+            switch (extension)
+            {
+                case ".txt":
+                case ".md":
+                    content = File.ReadAllText(filePath);
+                    break;
+                case ".pdf":
+                    content = PdfTextExtractor.ExtractText(filePath);
+                    break;
+                case ".docx":
+                case ".pptx":
+                case ".xlsx":
+                case ".doc":
+                case ".xls":
+                case ".ppt":
+                    content = OfficeTextExtractor.ExtractText(filePath);
+                    break;
+                case ".eml":
+                    content = EmailTextExtractor.ExtractText(filePath);
+                    break;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error extracting text from {filePath}: {ex.Message}");
         }
 
-        return content;
+        return content ?? string.Empty;
     }
 
     private static void SearchDocuments(string queryText)
