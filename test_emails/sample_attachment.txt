@@ -1,0 +1,4 @@
+This is a sample text file attachment.
+It contains some test content that we'll search for.
+
+Keywords: test, sample, attachment, search

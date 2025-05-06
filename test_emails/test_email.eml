@@ -1,0 +1,28 @@
+From: sender@example.com
+To: recipient@example.com
+Subject: Test Email with Attachment
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="frontier"
+
+--frontier
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+<body>
+    <h1>Test Email</h1>
+    <p>This is a test email with an attachment.</p>
+    <p>It contains some <b>important</b> information.</p>
+    <p>Keywords: test, email, attachment, important</p>
+</body>
+</html>
+
+--frontier
+Content-Type: text/plain; name="sample_attachment.txt"
+Content-Disposition: attachment; filename="sample_attachment.txt"
+Content-Transfer-Encoding: base64
+
+VGhpcyBpcyBhIHNhbXBsZSB0ZXh0IGZpbGUgYXR0YWNobWVudC4KSXQgY29udGFpbnMgc29tZSB0
+ZXN0IGNvbnRlbnQgdGhhdCB3ZSdsbCBzZWFyY2ggZm9yLgoKS2V5d29yZHM6IHRlc3QsIHNhbXBs
+ZSwgYXR0YWNobWVudCwgc2VhcmNo
+--frontier--

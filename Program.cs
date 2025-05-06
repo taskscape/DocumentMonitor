@@ -91,22 +91,33 @@ class Program
         // Main loop
         while (_isRunning)
         {
-            if (Console.KeyAvailable)
+            // Check for user input
+            try
             {
-                var key = Console.ReadKey(true);
-                if (key.Key == ConsoleKey.S)
+                if (Console.KeyAvailable)
                 {
-                    Console.Write("\nEnter search query: ");
-                    var query = Console.ReadLine();
-                    if (!string.IsNullOrWhiteSpace(query))
+                    var key = Console.ReadKey(true).Key;
+                    if (key == ConsoleKey.S)
                     {
-                        SearchDocuments(query);
+                        Console.Write("\nEnter search query: ");
+                        var query = Console.ReadLine();
+                        if (!string.IsNullOrWhiteSpace(query))
+                        {
+                            SearchDocuments(query);
+                            Console.WriteLine("\nPress any key to continue...");
+                            Console.ReadKey(true);
+                        }
+                    }
+                    else if (key == ConsoleKey.Q)
+                    {
+                        _isRunning = false;
                     }
                 }
-                else if (key.Key == ConsoleKey.Q)
-                {
-                    _isRunning = false;
-                }
+            }
+            catch (InvalidOperationException)
+            {
+                // Console input not available, wait a bit and continue
+                Thread.Sleep(1000);
             }
             Thread.Sleep(100);
         }
