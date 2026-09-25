@@ -19,7 +19,7 @@ This is a C# console application that monitors specified folders for document ch
 
 ## Prerequisites
 
-- .NET 9.0 SDK or later
+- .NET 10.0 SDK or later
 - Windows OS (for file system monitoring)
 
 ## Configuration
